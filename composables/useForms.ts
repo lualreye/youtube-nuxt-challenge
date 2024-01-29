@@ -1,4 +1,5 @@
 import { reactive, computed, ref } from 'vue';
+
 import { validateEmail } from '../utils/AuthValidations.utils';
 
 export function useForm() {
@@ -21,7 +22,7 @@ export function useForm() {
     ],
     passwordValidation: [
       {
-        validate: (value: string) => value.length > 10,
+        validate: (value: string) => value.length > 6,
         message: 'El password debe tener al menos 10 caracteres' 
       }
     ]
