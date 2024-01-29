@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { computed } from 'vue';
+import { useRouter } from 'vue-router';
 
 import useUserStore from '~/store/auth';
 
 const userStore = useUserStore();
 
+const router = useRouter();
+
+const showLogoutButton = ref(false);
 const user = computed(() => userStore.user);
 const userInitial = computed(() => {
   if (user && user.value?.email) {
@@ -13,14 +17,24 @@ const userInitial = computed(() => {
   return '';
 });
 
-
+function redirectTo(param: string) {
+  router.push(`/${param}`)
+}
+function logout() {
+  userStore.logoutUser();
+  router.push('/');
+}
 </script>
 
 
 <template>
   <header class="youtube-header">
 
-    <div class="youtube-header-logo">YT</div>
+    <NuxtLink
+      to="/"
+      class="youtube-header-logo">
+      YT
+    </NuxtLink>
 
     <div class="youtube-header-user-content">
       <template v-if="user">
@@ -33,19 +47,31 @@ const userInitial = computed(() => {
             {{ userInitial }}
           </span>
         </div>
-        <span class="youtube-header-username">
-          {{ user?.displayName || user.email }}
-        </span>
+        <div 
+          class="user-actions">
+          <span
+            class="youtube-header-username">
+            {{ user?.displayName || user.email }}
+          </span>
+          <GlobalButton
+            text="Cerrar sesión"
+            variant="secondary"
+            @click="logout"
+            class="logout-button"
+          />
+        </div>
       </template>
       <div
         v-else
         class="youtube-header-user-content-actions">
         <GlobalButton
           text="Iniciar sesión"
-          variant="primary" />
+          variant="primary"
+          @click="redirectTo('login')" />
         <GlobalButton
           text="Registrarse"
-          variant="secondary" />
+          variant="secondary"
+          @click="redirectTo('register')" />
       </div>
     </div>
   </header>
@@ -100,5 +126,22 @@ const userInitial = computed(() => {
     margin-left: 10px;
   }
 
+}
+
+.user-actions {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  .logout-button {
+    top: 120%;
+    left: 0;
+    position: absolute;
+    visibility: hidden;
+    transition: visibility 3s linear;
+  }
+  &:hover .logout-button {
+    visibility: visible;
+  }
 }
 </style>

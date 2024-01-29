@@ -76,26 +76,21 @@ onMounted(() => {
     padding: 0 24px;
     flex-grow: 1;
     max-width: 920px;
-    @media (min-width: 721px) {
-      height: 560px;
-    }
-
-    @media (min-width: 481px) and (max-width: 720px) {
-      height: 520px;
-    }
-
-    @media (min-width: 320px) and (max-width: 480px) {
-      height: 320px;
-    }
+    display: flex;
+    flex-direction: column;
     .video {
       width: 100%;
-      height: 100%;
+      height: 300px;
       max-width: 920px;
       margin: 0 auto;
       border-radius: 8px;
       box-shadow: inset 0px 0px 36px 36px rgba(0,0,0,0.75);
+      @media (min-width: 700px) {
+        height: 600px;
+      }
     }
     &-content {
+      padding: 24px 0;
       display: flex;
       flex-direction: column;
       .channel-details {
@@ -122,6 +117,7 @@ onMounted(() => {
         }
       }
       .video-description {
+        width: 100%;
         p {
           line-height: 24px;
         }

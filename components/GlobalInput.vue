@@ -130,11 +130,11 @@ watch(
 </script>
 
 <template>
-  <div class="crush-text-field">
+  <div class="text-field">
     <label :class="[validationClass, { 'error-label': hasError }]">
       <span
         v-if="!hideLabel"
-        class="crush-text-field-label-text">
+        class="text-field-label-text">
         {{ label }}
       </span>
       <span
@@ -152,7 +152,7 @@ watch(
         </span>
         <input
           v-bind="$attrs"
-          class="crush-text-field-input"
+          class="text-field-input"
           ref="input"
           :maxlength="maxLength"
           :required="required"
@@ -191,10 +191,10 @@ watch(
 <style lang="scss" scoped>
 $spacing-margin-padding: 8px;
 
-.crush-text-field {
+.text-field {
   margin-bottom: 1rem;
 
-  .crush-text-field-label-text {
+  .text-field-label-text {
     display: block;
     font-weight: bold;
     color: $white;
@@ -227,11 +227,11 @@ $spacing-margin-padding: 8px;
       color: $white;
     }
 
-    .crush-text-field-input {
+    .text-field-input {
       flex-grow: 1;
       border: none;
       outline: none;
-      color: $white;
+      color: $gray-light;
       background-color: transparent;
 
       &::placeholder {

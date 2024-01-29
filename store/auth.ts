@@ -1,4 +1,3 @@
-import { useRouter } from 'vue-router';
 import { defineStore } from 'pinia';
 import {
   createUserWithEmailAndPassword,
@@ -10,8 +9,6 @@ import {
 
 import { auth } from '../firebaseConfig';
 import type { User } from '../interface/user.interface';
-
-const router = useRouter();
 
 interface RootState {
   user: User | null,
@@ -40,8 +37,6 @@ const useUserStore = defineStore('UserStore', {
           photoUrl: user.photoURL,
           emailVerified: user.emailVerified
         }
-
-        await router.push('/');
       } catch (error: any) {
         this.errorMessage = error.message;
       } finally {
@@ -63,7 +58,6 @@ const useUserStore = defineStore('UserStore', {
           emailVerified: user.emailVerified
         }
 
-        router.push('/');
       } catch (error: any) {
         this.errorMessage = error.message;
       } finally {
