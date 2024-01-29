@@ -69,7 +69,7 @@ const publishedAtCopy = computed(() => props.publishedAt + ' visualizaciones');
   
   &-thumbnail {
     border-radius: 8px;
-    height: 80%;
+    height: 220px;
     width: 100%;
   }
 
