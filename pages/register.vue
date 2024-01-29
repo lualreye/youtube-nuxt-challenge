@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
 import useUserStore from '../store/auth';
 import { useForm } from '../composables/useForms';
 
@@ -6,22 +8,40 @@ const userStore = useUserStore();
 
 const { userData, userRules, enableForm, passwordIcon, textType, isPasswordVisible, resetValue, textKey } = useForm();
 
-function handleRegister() {
-  userStore.registerUser(userData.user, userData.password);
-  resetValue();
+const router = useRouter();
+
+function clearErroMessage(): void {
+  setTimeout(() => {
+    userStore.errorMessage = null;
+  }, 5000);
+}
+
+async function handleRegister(): Promise<void> {
+  await userStore.registerUser(userData.user, userData.password);
+  if (userStore.user) {
+    resetValue();
+    router.push('/');
+  }
+  clearErroMessage();
 }
 
 </script>
 
 <template>
   <div class="register-wrapper crush-container">
+    <h2>
+      Registro
+    </h2>
+    <div v-if="userStore.errorMessage" class="error-message">
+      {{ userStore.errorMessage }}
+    </div>
     <div class="register-wrapper-card">
-      <CrushTextField
+      <GlobalInput
         :key="textKey"
         v-model="userData.user"
         label="Usuario"
         :validRules="userRules.emailValidation" />
-      <CrushTextField
+      <GlobalInput
         :key="textKey"
         v-model.trim="userData.password"
         label="Password"
@@ -34,8 +54,8 @@ function handleRegister() {
             <i :class="passwordIcon" />
           </button>
         </template>
-      </CrushTextField>
-      <CrushButton
+      </GlobalInput>
+      <GlobalButton
         variant="primary"
         text="Registro"
         :dataLoading="userStore.isLoading"
@@ -49,16 +69,22 @@ function handleRegister() {
 .register-wrapper {
   margin: auto;
   display: flex;
+  flex-direction: column;
+  gap: 24px;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  .error-message {
+    color: $red;
+  }
   &-card {
-    background: $purple-dark;
+    background: $black;
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 100%;
     max-width: 360px;
+    border: 1px solid $gray;
     border-radius: 8px;
     padding: 16px;
     .hoot-text-field {

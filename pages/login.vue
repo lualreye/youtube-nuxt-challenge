@@ -1,18 +1,39 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router';
+
 import useUserStore from '../store/auth';
 import { useForm } from '../composables/useForms';
 
-const { userData, userRules, enableForm, passwordIcon, textType, isPasswordVisible, resetValue, textKey } = useForm();
+const router = useRouter();
+
 const userStore = useUserStore();
 
-function handleLogin() {
-  userStore.loginUser(userData.user, userData.password);
-  resetValue();
+const { userData, userRules, enableForm, passwordIcon, textType, isPasswordVisible, resetValue, textKey } = useForm();
+
+function clearErroMessage(): void {
+  setTimeout(() => {
+    userStore.errorMessage = null;
+  }, 5000);
+}
+
+async function handleLogin(): Promise<void> {
+  await userStore.loginUser(userData.user, userData.password);
+  if (userStore.user) {
+    resetValue();
+    router.push('/');
+  }
+  clearErroMessage()
 }
 </script>
 
 <template>
   <div class="register-wrapper crush-container">
+    <h2>
+      Iniciar sesión
+    </h2>
+    <div v-if="userStore.errorMessage" class="error-message">
+      {{ userStore.errorMessage }}
+    </div>
     <div class="register-wrapper-card">
       <GlobalInput
         :key="textKey"
@@ -35,7 +56,7 @@ function handleLogin() {
       </GlobalInput>
       <GlobalButton
         variant="primary"
-        text="Registro"
+        text="Inicia sesion"
         :dataLoading="userStore.isLoading"
         :disabled="!enableForm"
         @click.prevent="handleLogin" />
@@ -49,14 +70,20 @@ function handleLogin() {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+  gap: 24px;
   min-height: 100vh;
+  .error-message {
+    color: $red;
+  }
   &-card {
-    background: $purple-dark;
+    background: $black;
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 100%;
     max-width: 360px;
+    border: 1px solid $gray;
     border-radius: 8px;
     padding: 16px;
     .hoot-text-field {
