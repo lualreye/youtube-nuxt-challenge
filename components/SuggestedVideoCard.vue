@@ -40,10 +40,6 @@ const publishedAtCopy = computed(() => props.publishedAt + ' visualizaciones');
       :alt="channelTitle"
       class="youtube-card-thumbnail">
     <div class="youtube-card-info">
-      <img
-        :src="thumbnail"
-        :alt="title"
-        class="youtube-card-info-channel-image">
       <div class="youtube-card-info-content">
         <h3 class="title">
           {{ title }}
@@ -62,34 +58,27 @@ const publishedAtCopy = computed(() => props.publishedAt + ' visualizaciones');
 <style lang="scss" scoped>
 .youtube-card {
   display: flex;
-  flex-direction: column;
   border-radius: 8px;
-  overflow: hidden;
-  height: 342px;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  max-width: 420px;
+  margin: 0 auto;
   
   &-thumbnail {
     border-radius: 8px;
-    height: 220px;
-    width: 100%;
+    width: 180px;
+    height: 120px;
   }
 
   &-info {
     display: flex;
     align-items: flex-start;
-    &-channel-image {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      object-fit: none;
-      margin: 12px 12px 0 0;
-    }
 
     &-content {
       font-size: 1rem;
       color: $white;
       text-decoration: none;
-      margin: 0 0 10px 0;
-      padding-right: 24px;
       .title {
         color: $white;
         font-size: $body-font-size;
