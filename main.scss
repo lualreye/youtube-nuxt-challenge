@@ -1,0 +1,16 @@
+//colors
+@import './styles/colorVariables';
+// font-family
+@import './styles/font';
+//externalVariables
+@import './styles/externalVariables';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+
+p, h2, h3, h4, h5, h6, a{
+  color: $white;
+}
