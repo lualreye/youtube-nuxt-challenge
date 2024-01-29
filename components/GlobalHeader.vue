@@ -42,7 +42,8 @@ const userInitial = computed(() => {
         class="youtube-header-user-content-actions">
         <GlobalButton
           text="Iniciar sesión"
-          variant="primary" />
+          variant="primary"
+          @click="" />
         <GlobalButton
           text="Registrarse"
           variant="secondary" />
