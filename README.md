@@ -4,10 +4,18 @@ Este es un proyecto de ejemplo que utiliza Nuxt 3 y TypeScript.
 
 ## Tabla de Contenidos
 
+- [Variables](#variables)
 - [Instalación](#instalación)
 - [Desarrollo](#desarrollo)
 - [Estructura del Proyecto](#estructura-del-proyecto)
 - [Pruebas](#pruebas)
+
+## Variables
+
+Por default el proyecto tiene un base url que apunta a localhost:8000 que es el ambiente de desarrollo del backend
+Sin embargo es posible apuntar directamente a produccion del backend con la siguiente variable de entorno
+
+`VITE_BASE_URL=https://youtube-express-challenge.vercel.app/api`
 
 ## Instalación
 
