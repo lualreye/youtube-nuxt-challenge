@@ -3,6 +3,11 @@ import { fileURLToPath } from 'url';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
+  runtimeConfig: {
+    public: {
+      NUXT_PUBLIC_BASE_URL: process.env.NUXT_PUBLIC_BASE_URL!
+    }
+  },
   alias: {
     '@': fileURLToPath(new URL('./', import.meta.url))
   },
@@ -22,6 +27,6 @@ export default defineNuxtConfig({
     }
   },
   modules: [
-    '@pinia/nuxt'
+    '@pinia/nuxt',
   ]
 })

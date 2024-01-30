@@ -1,5 +1,3 @@
-import type { AxiosResponse } from 'axios';
-
 import APIBase from './HttpBase';
 import type { Video, Videos } from '~/interface/videos.interface';
 

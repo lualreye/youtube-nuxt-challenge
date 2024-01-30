@@ -3,7 +3,7 @@ import { defineStore } from 'pinia';
 import type { Videos, Video } from '~/interface/videos.interface';
 import VideoService from '~/services/Videos';
 
-const videoService = new VideoService(import.meta.env.API_BASE);
+const videoService = new VideoService(import.meta.env.VITE_BASE_URL);
 
 interface RootState {
   videos: Videos,
