@@ -1,75 +1,56 @@
-# Nuxt 3 Minimal Starter
+# Proyecto Nuxt 3
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Este es un proyecto de ejemplo que utiliza Nuxt 3 y TypeScript.
 
-## Setup
+## Tabla de Contenidos
 
-Make sure to install the dependencies:
+- [Instalación](#instalación)
+- [Desarrollo](#desarrollo)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Pruebas](#pruebas)
+
+## Instalación
+
+Para instalar las dependencias del proyecto, ejecuta el siguiente comando:
 
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+## Desarrollo
 
-Start the development server on `http://localhost:3000`:
+Para iniciar el servidor de desarrollo, ejecute el siguiente comando:
 
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+el servidor de desarrollo se iniciará en http://localhost:3000
 
-Build the application for production:
+## Estructura del proyecto
+
+- app.vue: Componente principal de la aplicación.
+- components/: Aquí se encuentran todos los componentes Vue de la aplicación.
+- composables/: Aquí se encuentran los composables de Vue.
+- firebaseConfig.ts: Configuración de Firebase.
+- interface/: Aquí se encuentran las interfaces de TypeScript utilizadas en el proyecto.
+- layouts/: Aquí se encuentran los layouts de Nuxt.
+- main.scss: Estilos globales de la aplicación.
+- nuxt.config.ts: Configuración de Nuxt.
+- pages/: Aquí se encuentran las páginas de Nuxt.
+- public/: Aquí se encuentran los archivos estáticos del proyecto.
+- server/: Aquí se encuentra el código del servidor.
+- services/: Aquí se encuentran los servicios que interactúan con APIs externas.
+- store/: Aquí se encuentra el store de Vuex.
+- styles/: Aquí se encuentran los estilos globales del proyecto.
+- tests/: Aquí se encuentran las pruebas del proyecto.
+- utils/: Aquí se encuentran las funciones de utilidad.
+- vitest.config.ts: Configuración de Vitest.
+
+## Pruebas
+
+Para ejecutar las pruebas del proyecto ejecuta el siguiente comando:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run test
 ```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
