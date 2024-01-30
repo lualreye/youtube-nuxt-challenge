@@ -5,6 +5,7 @@ Este es un proyecto de ejemplo que utiliza Nuxt 3 y TypeScript.
 ## Tabla de Contenidos
 
 - [Variables](#variables)
+- [Despliegue](#despliegue)
 - [Instalación](#instalación)
 - [Desarrollo](#desarrollo)
 - [Estructura del Proyecto](#estructura-del-proyecto)
@@ -16,6 +17,11 @@ Por default el proyecto tiene un base url que apunta a localhost:8000 que es el 
 Sin embargo es posible apuntar directamente a produccion del backend con la siguiente variable de entorno
 
 `VITE_BASE_URL=https://youtube-express-challenge.vercel.app/api`
+
+## Despligue
+
+para ver el proyecto en accion lo puede ver directamente en produccion dando click aqui
+- [Live project](https://chipper-rugelach-bfaf2e.netlify.app/)
 
 ## Instalación
 
